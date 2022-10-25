@@ -78,14 +78,13 @@
 		CC5648FF29080E1300E31B62 /* evshelemekhPW5 */ = {
 			isa = PBXGroup;
 			children = (
+				CC56492F2908653600E31B62 /* utils */,
 				CC5649262908118900E31B62 /* news */,
 				CC56491D290810A600E31B62 /* colorPalette */,
 				CC5649142908103000E31B62 /* notes */,
 				CC56490029080E1300E31B62 /* AppDelegate.swift */,
 				CC56490229080E1300E31B62 /* SceneDelegate.swift */,
 				CC56490429080E1300E31B62 /* ViewController.swift */,
-				CC5649222908110F00E31B62 /* CALayerShadow.swift */,
-				CC5649242908112B00E31B62 /* UISwiftPin.swift */,
 				CC56490929080E1300E31B62 /* Assets.xcassets */,
 				CC56490B29080E1300E31B62 /* LaunchScreen.storyboard */,
 				CC56490E29080E1300E31B62 /* Info.plist */,
@@ -122,6 +121,15 @@
 				CC56492D2908376600E31B62 /* ArticleViewController.swift */,
 			);
 			path = news;
+			sourceTree = "<group>";
+		};
+		CC56492F2908653600E31B62 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				CC5649222908110F00E31B62 /* CALayerShadow.swift */,
+				CC5649242908112B00E31B62 /* UISwiftPin.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
