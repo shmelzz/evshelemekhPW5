@@ -10,7 +10,14 @@ import UIKit
 final class NewsListViewController: UIViewController {
     private var tableView = UITableView(frame: .zero, style: .plain)
     private var isLoading = false
-    private var newsModels: [NewsModel] = []
+    private var newsModels: [NewsModel] = [
+        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
+        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
+        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
+        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
+        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
+        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500"))
+    ]
     
     override func viewDidLoad() {
         setupUI()
@@ -63,7 +70,13 @@ final class NewsListViewController: UIViewController {
     private func goBack() {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    private func fetchNews() {
+        
+    }
 }
+
+
 
 extension NewsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,7 +85,7 @@ extension NewsListViewController: UITableViewDataSource {
         } else {
             let viewModel = newsModels[indexPath.row]
             if let newsCell = tableView.dequeueReusableCell(withIdentifier: NewsCell.reuseIdentifier, for: indexPath) as? NewsCell {
-                // newsCell.configure(with: viewModel)
+                newsCell.configure(article: viewModel)
                 return newsCell
             }
         }
@@ -90,6 +103,10 @@ extension NewsListViewController: UITableViewDataSource {
 
 extension NewsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        if !isLoading {
+            let articleViewController = ArticleViewController()
+            articleViewController.configure(with: newsModels[indexPath.row])
+            navigationController?.pushViewController(articleViewController, animated: true)
+        }
     }
 }
