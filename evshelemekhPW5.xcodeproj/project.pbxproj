@@ -20,7 +20,10 @@
 		CC564921290810CA00E31B62 /* UIColorComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC564920290810CA00E31B62 /* UIColorComponents.swift */; };
 		CC5649232908110F00E31B62 /* CALayerShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5649222908110F00E31B62 /* CALayerShadow.swift */; };
 		CC5649252908112B00E31B62 /* UISwiftPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5649242908112B00E31B62 /* UISwiftPin.swift */; };
-		CC5649282908122A00E31B62 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5649272908122A00E31B62 /* NewsViewController.swift */; };
+		CC5649282908122A00E31B62 /* NewsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5649272908122A00E31B62 /* NewsListViewController.swift */; };
+		CC56492A29082F8300E31B62 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56492929082F8300E31B62 /* NewsCell.swift */; };
+		CC56492C2908327D00E31B62 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56492B2908327D00E31B62 /* NewsModel.swift */; };
+		CC56492E2908376600E31B62 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56492D2908376600E31B62 /* ArticleViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,7 +42,10 @@
 		CC564920290810CA00E31B62 /* UIColorComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorComponents.swift; sourceTree = "<group>"; };
 		CC5649222908110F00E31B62 /* CALayerShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayerShadow.swift; sourceTree = "<group>"; };
 		CC5649242908112B00E31B62 /* UISwiftPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwiftPin.swift; sourceTree = "<group>"; };
-		CC5649272908122A00E31B62 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		CC5649272908122A00E31B62 /* NewsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsListViewController.swift; sourceTree = "<group>"; };
+		CC56492929082F8300E31B62 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
+		CC56492B2908327D00E31B62 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		CC56492D2908376600E31B62 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,7 +116,10 @@
 		CC5649262908118900E31B62 /* news */ = {
 			isa = PBXGroup;
 			children = (
-				CC5649272908122A00E31B62 /* NewsViewController.swift */,
+				CC5649272908122A00E31B62 /* NewsListViewController.swift */,
+				CC56492929082F8300E31B62 /* NewsCell.swift */,
+				CC56492B2908327D00E31B62 /* NewsModel.swift */,
+				CC56492D2908376600E31B62 /* ArticleViewController.swift */,
 			);
 			path = news;
 			sourceTree = "<group>";
@@ -185,17 +194,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CC56492C2908327D00E31B62 /* NewsModel.swift in Sources */,
 				CC5649162908104600E31B62 /* NotesViewController.swift in Sources */,
 				CC56491C2908106F00E31B62 /* ShortNote.swift in Sources */,
 				CC56491F290810BD00E31B62 /* ColorPaletteView.swift in Sources */,
-				CC5649282908122A00E31B62 /* NewsViewController.swift in Sources */,
+				CC5649282908122A00E31B62 /* NewsListViewController.swift in Sources */,
 				CC56491A2908106100E31B62 /* AddNoteCell.swift in Sources */,
 				CC56490529080E1300E31B62 /* ViewController.swift in Sources */,
+				CC56492E2908376600E31B62 /* ArticleViewController.swift in Sources */,
 				CC5649182908105700E31B62 /* NoteCell.swift in Sources */,
 				CC56490129080E1300E31B62 /* AppDelegate.swift in Sources */,
 				CC56490329080E1300E31B62 /* SceneDelegate.swift in Sources */,
 				CC564921290810CA00E31B62 /* UIColorComponents.swift in Sources */,
 				CC5649252908112B00E31B62 /* UISwiftPin.swift in Sources */,
+				CC56492A29082F8300E31B62 /* NewsCell.swift in Sources */,
 				CC5649232908110F00E31B62 /* CALayerShadow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
