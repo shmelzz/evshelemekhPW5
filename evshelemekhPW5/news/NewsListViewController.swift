@@ -7,20 +7,32 @@
 
 import UIKit
 
-final class NewsListViewController: UIViewController {
+final class NewsListViewController: UIViewController,
+                                    NewsDisplayLogic {
+    
+    private let interactor: NewsBuisnessLogic
+    private let decoder: JSONDecoder = JSONDecoder()
+    
     private var tableView = UITableView(frame: .zero, style: .plain)
     private var isLoading = false
-    private var newsModels: [NewsModel] = [
-        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
-        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
-        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
-        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
-        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500")),
-        NewsModel(title: "String", description: "String", imageURL: URL(string: "https://picsum.photos/seed/picsum/500"))
-    ]
+    private var news: Model.News = Model.News (status: "", totalResults: 0, articles: [] )
+    
+    // MARK: - Lifecycle
+    init(interactor: NewsBuisnessLogic) {
+        self.interactor = interactor
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .systemPink
         setupUI()
+        interactor.loadNews(Model.GetNews.Request())
     }
     
     private func setupUI() {
@@ -71,8 +83,15 @@ final class NewsListViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    private func fetchNews() {
-        
+    private func reloadData() {
+        DispatchQueue.main.async { [weak self] in
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func displayNews(_ viewModel: Model.GetNews.ViewModel) {
+        news = viewModel.news
+        reloadData()
     }
 }
 
@@ -80,23 +99,28 @@ final class NewsListViewController: UIViewController {
 
 extension NewsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if isLoading {
-            
-        } else {
-            let viewModel = newsModels[indexPath.row]
-            if let newsCell = tableView.dequeueReusableCell(withIdentifier: NewsCell.reuseIdentifier, for: indexPath) as? NewsCell {
-                newsCell.configure(article: viewModel)
-                return newsCell
-            }
-        }
-        return UITableViewCell()
+        //        if isLoading {
+        //
+        //        } else {
+        //            let viewModel = news.news?[indexPath.row]
+        //            if let newsCell = tableView.dequeueReusableCell(withIdentifier: NewsCell.reuseIdentifier, for: indexPath) as? NewsCell {
+        //                newsCell.configure(article: viewModel)
+        //                return newsCell
+        //            }
+        //        }
+        //        return UITableViewCell()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell") as? NewsCell
+        cell?.newsTitleLabel.text = news.articles?[indexPath.row].title ?? ""
+        
+        return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isLoading {
             return 0
         } else {
-            return newsModels.count
+            return news.articles?.count ?? 0
         }
     }
 }
@@ -105,7 +129,7 @@ extension NewsListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if !isLoading {
             let articleViewController = ArticleViewController()
-            articleViewController.configure(with: newsModels[indexPath.row])
+            articleViewController.configure(with: news.articles?[indexPath.row])
             navigationController?.pushViewController(articleViewController, animated: true)
         }
     }

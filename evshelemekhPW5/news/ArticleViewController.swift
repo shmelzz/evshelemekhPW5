@@ -13,18 +13,15 @@ final class ArticleViewController: UIViewController {
     private var titleLabel = UILabel()
     private var articleLabel = UILabel()
     
-    public func configure(with viewModel: NewsModel) {
-        titleLabel.text = viewModel.title
-        articleLabel.text = viewModel.description
+    public func configure(with viewModel: NewsModel.Article?) {
+        titleLabel.text = viewModel?.title
+        articleLabel.text = viewModel?.articleDescription
         
-        if let data = viewModel.imageData {
-            imageView.image = UIImage(data: data)
-        } else if let url = viewModel.imageURL {
+        if let url = URL(string: viewModel?.urlToImage ?? "https://www.iguides.ru/upload/iblock/faf/ngpugy6u4eu816srszorhql9pey5gyrk.png") {
             URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
                 guard let data = data else {
                     return
                 }
-                viewModel.imageData = data
                 DispatchQueue.main.async {
                     self?.imageView.image = UIImage(data: data)
                 }

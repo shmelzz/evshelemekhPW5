@@ -12,7 +12,7 @@ final class NewsCell: UITableViewCell {
     static let reuseIdentifier = "NewsCell"
     
     private let newsImageView = UIImageView()
-    private let newsTitleLabel = UILabel()
+    let newsTitleLabel = UILabel()
     private let newsArticleLabel = UILabel()
     
     // MARK: - Init
@@ -31,19 +31,16 @@ final class NewsCell: UITableViewCell {
         super.layoutSubviews()
     }
     
-    public func configure(article: NewsModel) {
+    public func configure(article: NewsModel.Article?) {
         setupView()
-        newsTitleLabel.text = article.title
-        newsArticleLabel.text = article.description
+        newsTitleLabel.text = article?.title
+        newsArticleLabel.text = article?.articleDescription
         
-        if let data = article.imageData {
-            newsImageView.image = UIImage(data: data)
-        } else if let url = article.imageURL {
+        if let url = URL(string: article?.urlToImage ?? "https://www.iguides.ru/upload/iblock/faf/ngpugy6u4eu816srszorhql9pey5gyrk.png") {
             URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
                 guard let data = data else {
                     return
                 }
-                article.imageData = data
                 DispatchQueue.main.async {
                     self?.newsImageView.image = UIImage(data: data)
                 }
@@ -80,7 +77,7 @@ final class NewsCell: UITableViewCell {
         contentView.addSubview(newsTitleLabel)
         newsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
         newsTitleLabel.heightAnchor.constraint(equalToConstant:
-        newsTitleLabel.font.lineHeight).isActive = true
+                                                newsTitleLabel.font.lineHeight).isActive = true
         newsTitleLabel.leadingAnchor.constraint(equalTo: newsImageView.trailingAnchor, constant: 12).isActive = true
         newsTitleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12).isActive = true
         newsTitleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12).isActive = true

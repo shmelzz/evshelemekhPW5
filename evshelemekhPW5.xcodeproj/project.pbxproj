@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CC153459290AC30200FC08EA /* NewsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC153458290AC30200FC08EA /* NewsProtocols.swift */; };
+		CC15345B290AC56800FC08EA /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC15345A290AC56800FC08EA /* NewsPresenter.swift */; };
+		CC15345D290AC5A000FC08EA /* NewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC15345C290AC5A000FC08EA /* NewsInteractor.swift */; };
+		CC15345F290AC5D200FC08EA /* NewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC15345E290AC5D200FC08EA /* NewsAssembly.swift */; };
 		CC56490129080E1300E31B62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56490029080E1300E31B62 /* AppDelegate.swift */; };
 		CC56490329080E1300E31B62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56490229080E1300E31B62 /* SceneDelegate.swift */; };
 		CC56490529080E1300E31B62 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56490429080E1300E31B62 /* ViewController.swift */; };
@@ -24,9 +28,14 @@
 		CC56492A29082F8300E31B62 /* NewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56492929082F8300E31B62 /* NewsCell.swift */; };
 		CC56492C2908327D00E31B62 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56492B2908327D00E31B62 /* NewsModel.swift */; };
 		CC56492E2908376600E31B62 /* ArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC56492D2908376600E31B62 /* ArticleViewController.swift */; };
+		CC5649312908819B00E31B62 /* NewsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5649302908819B00E31B62 /* NewsWorker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CC153458290AC30200FC08EA /* NewsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsProtocols.swift; sourceTree = "<group>"; };
+		CC15345A290AC56800FC08EA /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
+		CC15345C290AC5A000FC08EA /* NewsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsInteractor.swift; sourceTree = "<group>"; };
+		CC15345E290AC5D200FC08EA /* NewsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAssembly.swift; sourceTree = "<group>"; };
 		CC5648FD29080E1300E31B62 /* evshelemekhPW5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = evshelemekhPW5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC56490029080E1300E31B62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC56490229080E1300E31B62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +55,7 @@
 		CC56492929082F8300E31B62 /* NewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCell.swift; sourceTree = "<group>"; };
 		CC56492B2908327D00E31B62 /* NewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
 		CC56492D2908376600E31B62 /* ArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleViewController.swift; sourceTree = "<group>"; };
+		CC5649302908819B00E31B62 /* NewsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsWorker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +129,11 @@
 				CC56492929082F8300E31B62 /* NewsCell.swift */,
 				CC56492B2908327D00E31B62 /* NewsModel.swift */,
 				CC56492D2908376600E31B62 /* ArticleViewController.swift */,
+				CC5649302908819B00E31B62 /* NewsWorker.swift */,
+				CC153458290AC30200FC08EA /* NewsProtocols.swift */,
+				CC15345A290AC56800FC08EA /* NewsPresenter.swift */,
+				CC15345C290AC5A000FC08EA /* NewsInteractor.swift */,
+				CC15345E290AC5D200FC08EA /* NewsAssembly.swift */,
 			);
 			path = news;
 			sourceTree = "<group>";
@@ -204,10 +219,13 @@
 			files = (
 				CC56492C2908327D00E31B62 /* NewsModel.swift in Sources */,
 				CC5649162908104600E31B62 /* NotesViewController.swift in Sources */,
+				CC15345F290AC5D200FC08EA /* NewsAssembly.swift in Sources */,
+				CC5649312908819B00E31B62 /* NewsWorker.swift in Sources */,
 				CC56491C2908106F00E31B62 /* ShortNote.swift in Sources */,
 				CC56491F290810BD00E31B62 /* ColorPaletteView.swift in Sources */,
 				CC5649282908122A00E31B62 /* NewsListViewController.swift in Sources */,
 				CC56491A2908106100E31B62 /* AddNoteCell.swift in Sources */,
+				CC153459290AC30200FC08EA /* NewsProtocols.swift in Sources */,
 				CC56490529080E1300E31B62 /* ViewController.swift in Sources */,
 				CC56492E2908376600E31B62 /* ArticleViewController.swift in Sources */,
 				CC5649182908105700E31B62 /* NoteCell.swift in Sources */,
@@ -215,7 +233,9 @@
 				CC56490329080E1300E31B62 /* SceneDelegate.swift in Sources */,
 				CC564921290810CA00E31B62 /* UIColorComponents.swift in Sources */,
 				CC5649252908112B00E31B62 /* UISwiftPin.swift in Sources */,
+				CC15345B290AC56800FC08EA /* NewsPresenter.swift in Sources */,
 				CC56492A29082F8300E31B62 /* NewsCell.swift in Sources */,
+				CC15345D290AC5A000FC08EA /* NewsInteractor.swift in Sources */,
 				CC5649232908110F00E31B62 /* CALayerShadow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

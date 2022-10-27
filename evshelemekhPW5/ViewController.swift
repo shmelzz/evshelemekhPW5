@@ -170,7 +170,7 @@ class ViewController: UIViewController {
         let generator = UIImpactFeedbackGenerator(style: .heavy)
         generator.impactOccurred()
         
-        let newsController = NewsListViewController()
+        let newsController = NewsAssembly.build()
        // show(newsController, sender: self)
      
         navigationController?.pushViewController(newsController, animated: true)
