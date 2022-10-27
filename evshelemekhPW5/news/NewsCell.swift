@@ -32,9 +32,6 @@ final class NewsCell: UITableViewCell {
     }
     
     public func configure(article: NewsModel.Article?) {
-        setupView()
-        newsTitleLabel.text = article?.title
-        newsArticleLabel.text = article?.articleDescription
         
         if let url = URL(string: article?.urlToImage ?? "https://www.iguides.ru/upload/iblock/faf/ngpugy6u4eu816srszorhql9pey5gyrk.png") {
             URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
@@ -46,6 +43,9 @@ final class NewsCell: UITableViewCell {
                 }
             }.resume()
         }
+        
+        newsTitleLabel.text = article?.title
+        newsArticleLabel.text = article?.articleDescription
     }
     
     // MARK: - Setup Views
@@ -72,7 +72,7 @@ final class NewsCell: UITableViewCell {
     private func setupTitleLabel() {
         newsTitleLabel.font = .systemFont(ofSize: 16, weight: .medium)
         newsTitleLabel.textColor = .label
-        newsTitleLabel.numberOfLines = 1
+        newsTitleLabel.numberOfLines = 2
         
         contentView.addSubview(newsTitleLabel)
         newsTitleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -86,7 +86,7 @@ final class NewsCell: UITableViewCell {
     private func setupArticleLabel() {
         newsArticleLabel.font = .systemFont(ofSize: 14, weight: .regular)
         newsArticleLabel.textColor = .secondaryLabel
-        newsArticleLabel.numberOfLines = 0
+        newsArticleLabel.numberOfLines = 3
         
         contentView.addSubview(newsArticleLabel)
         newsArticleLabel.translatesAutoresizingMaskIntoConstraints = false

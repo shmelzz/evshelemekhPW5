@@ -31,8 +31,8 @@ final class NewsListViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
-        setupUI()
         interactor.loadNews(Model.GetNews.Request())
+        setupUI()
     }
     
     private func setupUI() {
@@ -76,6 +76,19 @@ final class NewsListViewController: UIViewController,
             target: self,
             action: #selector(goBack)
         )
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(
+                systemName: "arrow.counterclockwise"),
+            style: .plain,
+            target: self,
+            action: #selector(refreshNews)
+        )
+    }
+    
+    @objc
+    private func refreshNews() {
+        interactor.loadNews(Model.GetNews.Request())
     }
     
     @objc
@@ -99,21 +112,16 @@ final class NewsListViewController: UIViewController,
 
 extension NewsListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //        if isLoading {
-        //
-        //        } else {
-        //            let viewModel = news.news?[indexPath.row]
-        //            if let newsCell = tableView.dequeueReusableCell(withIdentifier: NewsCell.reuseIdentifier, for: indexPath) as? NewsCell {
-        //                newsCell.configure(article: viewModel)
-        //                return newsCell
-        //            }
-        //        }
-        //        return UITableViewCell()
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "NewsCell") as? NewsCell
-        cell?.newsTitleLabel.text = news.articles?[indexPath.row].title ?? ""
-        
-        return cell ?? UITableViewCell()
+        if isLoading {
+            
+        } else {
+            let viewModel = news.articles?[indexPath.row]
+            if let newsCell = tableView.dequeueReusableCell(withIdentifier: NewsCell.reuseIdentifier, for: indexPath) as? NewsCell {
+                newsCell.configure(article: viewModel)
+                return newsCell
+            }
+        }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

@@ -31,7 +31,6 @@ final class ArticleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setupView()
     }
     
@@ -61,7 +60,7 @@ final class ArticleViewController: UIViewController {
     
     private func setImageView() {
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         view.addSubview(imageView)
         imageView.pin(to: view, [.left: 0, .right: 0])
         imageView.pinTop(to: view.safeAreaLayoutGuide.topAnchor)
